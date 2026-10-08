@@ -13,4 +13,9 @@ public:
     explicit InvalidDateException(const std::string& message) : HotelException(message) {}
 };
 
+class RoomUnavailableException : public HotelException {
+public:
+    explicit RoomUnavailableException(const std::string& message) : HotelException(message) {}
+};
+
 } 

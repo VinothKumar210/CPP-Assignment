@@ -27,9 +27,10 @@ public:
     int getDay() const;
 
     static Date today();
+    bool isWeekend() const;
 };
 
-bool isWeekend() const;
+
 
 inline bool operator<(const Date& a, const Date& b) {
     return std::tuple{a.getYear(), a.getMonth(), a.getDay()} <
