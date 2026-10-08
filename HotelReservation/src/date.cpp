@@ -2,20 +2,18 @@
 
 #include <chrono>
 #include <stdexcept>
+#include "hotel/exceptions.h"
 
 namespace hotel {
-
-// ── Constructor ───────────────────────────────────────────────────────────────
 
 Date::Date(int year, int month, int day)
     : year_(year), month_(month), day_(day)
 {
     if (!isValid()) {
-        throw std::invalid_argument("Invalid date: " + toString());
+        throw InvalidDateException("Invalid date: " + toString());
     }
 }
 
-// ── Validation ────────────────────────────────────────────────────────────────
 
 bool Date::isValid() const
 {
@@ -27,7 +25,6 @@ bool Date::isValid() const
     return ymd.ok();
 }
 
-// ── Date Arithmetic ───────────────────────────────────────────────────────────
 
 int Date::daysBetween(const Date& other) const
 {
@@ -46,7 +43,6 @@ int Date::daysBetween(const Date& other) const
     return static_cast<int>((d2 - d1).count());
 }
 
-// ── Formatting ────────────────────────────────────────────────────────────────
 
 std::string Date::toString() const
 {
@@ -59,13 +55,10 @@ std::string Date::toString() const
     return std::to_string(year_) + "-" + monthStr + "-" + dayStr;
 }
 
-// ── Accessors ─────────────────────────────────────────────────────────────────
 
 int Date::getYear()  const { return year_;  }
 int Date::getMonth() const { return month_; }
 int Date::getDay()   const { return day_;   }
-
-// ── Static Factory ────────────────────────────────────────────────────────────
 
 Date Date::today()
 {
@@ -80,4 +73,4 @@ Date Date::today()
     };
 }
 
-} // namespace hotel
+} 
