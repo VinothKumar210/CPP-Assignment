@@ -14,6 +14,18 @@ Date::Date(int year, int month, int day)
     }
 }
 
+bool Date::isWeekend() const {
+    std::chrono::year_month_day ymd{
+        std::chrono::year(year_),
+        std::chrono::month(static_cast<unsigned>(month_)),
+        std::chrono::day(static_cast<unsigned>(day_))
+    };
+    std::chrono::sys_days sysDays = ymd;
+    std::chrono::weekday wd{sysDays};
+    
+    return wd == std::chrono::Saturday || wd == std::chrono::Sunday;
+}
+
 
 bool Date::isValid() const
 {

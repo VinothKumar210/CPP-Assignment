@@ -4,6 +4,7 @@
 #include <stdexcept>
 #include <tuple>
 
+
 namespace hotel {
 
 class Date {
@@ -27,6 +28,8 @@ public:
 
     static Date today();
 };
+
+bool isWeekend() const;
 
 inline bool operator<(const Date& a, const Date& b) {
     return std::tuple{a.getYear(), a.getMonth(), a.getDay()} <
