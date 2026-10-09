@@ -19,16 +19,14 @@ public:
           baseRate_(baseRate),
           amenities_(amenities) {}
 
-    // Getters
     RoomType getType() const { return type_; }
     int getDefaultCapacity() const { return defaultCapacity_; }
     double getBaseRate() const { return baseRate_; }
     const std::vector<std::string>& getAmenities() const { return amenities_; }
 
-    // Human readable string
     std::string getName() const {
-        return toString(type_); // This uses the toString function from enums.h
+        return toString(type_); 
     }
 };
 
-} // namespace hotel
+} 
